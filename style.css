@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: dimgray;
 }
@@ -8,6 +13,9 @@ body {
   grid-template-rows: repeat(3, 100px); 
 }
 
-.box {
+.game-box {
+  display: grid;
   border: 1px solid black;
+  align-items: center;
+  justify-items: center;
 }
