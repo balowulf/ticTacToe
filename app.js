@@ -1,6 +1,7 @@
 // DOM VARIABLES
 const gameBoxContainer = document.querySelector('.game-box-container');
 const gameBoxes = document.querySelectorAll('.game-box');
+const gamePiece = ['X', 'O'];
 
 // CLASSES
 class Game { 
@@ -8,9 +9,17 @@ class Game {
   constructor() { }
 
   static addMark(e) {
-    let box = e.target;
-    let boxName = e.target.classList[1];
-    box.innerHTML = 'X';
+    console.log(gamePiece);
+    if (!e.target.classList.contains('game-box')) {
+      return;
+    }
+    if (!e.target.classList.contains('selected')) {
+      let box = e.target;
+      box.classList.add('selected');
+      box.innerHTML = gamePiece[0];
+      let usedPiece = gamePiece.shift();
+      gamePiece.push(usedPiece);
+    } 
   }
 
   switchTurn() { }

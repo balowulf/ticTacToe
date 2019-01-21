@@ -19,3 +19,7 @@ body {
   align-items: center;
   justify-items: center;
 }
+
+.selected {
+  background: #999;
+}
