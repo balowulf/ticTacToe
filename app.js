@@ -1,8 +1,9 @@
 // DOM VARIABLES
 const gameBoxContainer = document.querySelector('.game-box-container');
-const gameBoxes = document.querySelectorAll('.game-box');
-const declareWinner = document.querySelector('.declare-winner');
-const gamePiece = ['ex','oh'];
+const gameBoxes        = document.querySelectorAll('.game-box');
+const declareWinner    = document.querySelector('.declare-winner');
+const newGame          = document.querySelector('#new-game-btn');
+const gamePiece        = ['ex','oh'];
 let usedPiece;
 
 const winningPatterns = ["123","147","159","258","357","369","456","789"];
@@ -11,11 +12,6 @@ let patternsX = [];
 let patternsO = [];
 
 // FUNCTIONS
-// TODO:
-// // every time addMark runs, we need to 
-// // add element either to player 1 or player 2 array
-// // check both arrays for a match with winningPatterns
-// // endgame and declare winning if found, do nothing if not
 function addMark(e) {
   if (!e.target.classList.contains('game-box')) {
     return;
@@ -30,12 +26,12 @@ function addMark(e) {
       patternsX.push(parseInt(e.target.classList[1]));
       patternsX.sort();
       let xCombos = getCombinations(patternsX);
-      findMatch(xCombos, winningPatterns);
+      findMatch(xCombos, winningPatterns, 'X');
     } else {
       patternsO.push(parseInt(e.target.classList[1]));
       patternsO.sort();
       let oCombos = getCombinations(patternsO);
-      findMatch(oCombos, winningPatterns);
+      findMatch(oCombos, winningPatterns, 'O');
     }
   } 
 }
@@ -54,17 +50,18 @@ function getCombinations(chars) {
   return filteredResult;
 }
 
-// Check for winniner by finding out if 
+// Check for winner by finding out if 
 // one array contains a value found in another array
-function findMatch(aryOne, aryTwo) {
+function findMatch(aryOne, aryTwo, text) {
   let matches = [];
   for (i = 0; i < aryOne.length; i++) {
     for (j = 0; j < aryTwo.length; j++) {
       if (aryOne[i] == aryTwo[j]) {
         // matches.push(aryOne[i]);
         let winnerText = document.createElement('h2');
-        winnerText.textContent = 'We have a winner!';
+        winnerText.textContent = `${text} is the winner!`;
         declareWinner.insertBefore(winnerText, null);
+        newGame.style.display = 'inline';
       }
     }
   }
@@ -73,3 +70,11 @@ function findMatch(aryOne, aryTwo) {
 
 // EVENT LISTENERS
 gameBoxContainer.addEventListener('click', addMark);
+newGame.addEventListener('click', (e) => {
+  e.target.style.display = 'none';
+  declareWinner.textContent = '';
+  gameBoxes.forEach((box) => {
+    box.classList.remove('oh', 'ex', 'selected');
+  });
+  e.preventDefault();
+});

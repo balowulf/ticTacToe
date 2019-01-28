@@ -6,7 +6,7 @@
 }
 
 body {
-  background: dimgray;
+  background     : dimgray;
   justify-content: center;
 }
 
@@ -37,16 +37,36 @@ body {
 }
 
 .declare-winner {
-  display: flex;
+  display        : flex;
   justify-content: center;
-  margin-top: 2rem;
-  color: #f38a45;
+  margin-top     : 2rem;
+  color          : #f38a45;
 }
 
 .title {
-  display: flex;
+  display        : flex;
   justify-content: center;
-  margin: 5rem auto;
-  color: #f38a45;
-  font-size: 3rem;
+  margin         : 5rem auto;
+  color          : #f38a45;
+  font-size      : 3rem;
+}
+
+.new-game {
+  display        : flex;
+  justify-content: center;
+}
+
+#new-game-btn {
+  margin    : 5rem auto;
+  font-size : 16px;
+  padding   : 4px 8px;
+  height    : 2rem;
+  background: #bbbbbb;
+  color     : #8a5a36;
+  border    : 1px solid black;
+}
+
+#new-game-btn:hover {
+  background: #333;
+  color     : #f4b932;
 }
