@@ -1,12 +1,14 @@
 // DOM VARIABLES
 const gameBoxContainer = document.querySelector('.game-box-container');
-const gameBoxes        = document.querySelectorAll('.game-box');
+const gameBoxes        = Array.from(document.querySelectorAll('.game-box'));
 const declareWinner    = document.querySelector('.declare-winner');
 const newGame          = document.querySelector('#new-game-btn');
 const gamePiece        = ['ex','oh'];
 let usedPiece;
 
 const winningPatterns = ['123','147','159','258','357','369','456','789'];
+let freeSpaces        = gameBoxes.filter(e => !e.classList.contains('selected'));
+
 
 let patternsX = [];
 let patternsO = [];
@@ -54,11 +56,16 @@ function getCombinations(chars) {
 // one array contains a value found in another array
 function findMatch(aryOne, aryTwo, text) {
   let matches = [];
+  let winnerText = document.createElement('h2');
   for (i = 0; i < aryOne.length; i++) {
     for (j = 0; j < aryTwo.length; j++) {
       if (aryOne[i] == aryTwo[j]) {
-        let winnerText = document.createElement('h2');
         winnerText.textContent = `${text} is the winner!`;
+        declareWinner.insertBefore(winnerText, null);
+        newGame.style.display = 'inline';
+      }
+      else if (aryOne[i] !== aryTwo[j] && gameBoxes.filter(e => !e.classList.contains('selected')).length === 0) {
+        winnerText.textContent = `Tie game!`;
         declareWinner.insertBefore(winnerText, null);
         newGame.style.display = 'inline';
       }
