@@ -6,14 +6,14 @@ const newGame          = document.querySelector('#new-game-btn');
 const gamePiece        = ['ex','oh'];
 let usedPiece;
 
-const winningPatterns = ["123","147","159","258","357","369","456","789"];
+const winningPatterns = ['123','147','159','258','357','369','456','789'];
 
 let patternsX = [];
 let patternsO = [];
 
 // FUNCTIONS
 function addMark(e) {
-  if (!e.target.classList.contains('game-box')) {
+  if (!e.target.classList.contains('game-box') || newGame.style.display !== 'none') {
     return;
   }
   if (!e.target.classList.contains('selected')) {
@@ -38,9 +38,9 @@ function addMark(e) {
 
 // get every possible 3-digit combination of every element in array
 function getCombinations(chars) {
-  var result = [];
-  var f = function(prefix, chars) {
-    for (var i = 0; i < chars.length; i++) {
+  let result = [];
+  let f = function(prefix, chars) {
+    for (let i = 0; i < chars.length; i++) {
       result.push(prefix + chars[i]);
       f(prefix + chars[i], chars.slice(i + 1));
     }
@@ -57,7 +57,6 @@ function findMatch(aryOne, aryTwo, text) {
   for (i = 0; i < aryOne.length; i++) {
     for (j = 0; j < aryTwo.length; j++) {
       if (aryOne[i] == aryTwo[j]) {
-        // matches.push(aryOne[i]);
         let winnerText = document.createElement('h2');
         winnerText.textContent = `${text} is the winner!`;
         declareWinner.insertBefore(winnerText, null);
@@ -65,7 +64,6 @@ function findMatch(aryOne, aryTwo, text) {
       }
     }
   }
-  // return matches;
 }
 
 // EVENT LISTENERS
@@ -73,6 +71,8 @@ gameBoxContainer.addEventListener('click', addMark);
 newGame.addEventListener('click', (e) => {
   e.target.style.display = 'none';
   declareWinner.textContent = '';
+  patternsO = [];
+  patternsX = [];
   gameBoxes.forEach((box) => {
     box.classList.remove('oh', 'ex', 'selected');
   });
