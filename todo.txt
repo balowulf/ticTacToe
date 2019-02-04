@@ -1,2 +1,0 @@
-Todo
-	1. Make "New Game" button clear the board
