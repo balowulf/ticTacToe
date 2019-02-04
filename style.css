@@ -24,23 +24,24 @@ body {
   justify-items: center;
 }
 
-.ex:after {
+.X:after {
   font-size: 50px;
   color    : #24cccd;
   content  : "X";
 }
 
-.oh:after {
+.O:after {
   font-size: 50px;
   content  : "0";
   color    : #6ed248;
 }
 
-.declare-winner {
+.game-info {
   display        : flex;
   justify-content: center;
-  margin-top     : 2rem;
+  margin         : 5rem auto;
   color          : #cc9543;
+  font-size      : 20px;
 }
 
 .title {
