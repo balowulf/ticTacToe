@@ -65,6 +65,7 @@ body {
   background: #282828;
   color     : #f4b932;
   border    : 1px solid black;
+  cursor    : pointer;
 }
 
 #new-game-btn:hover {
