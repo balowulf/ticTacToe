@@ -1,0 +1,24 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "### In-Browser Tic-Tac-Toe game, written with vanilla JS and styled with Flexbox.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balowulf/ticTacToe.git"
+  },
+  "author": "Chris Balow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/balowulf/ticTacToe/issues"
+  },
+  "homepage": "https://github.com/balowulf/ticTacToe#readme",
+  "dependencies": {
+    "vite": "^4.3.4"
+  }
+}
